@@ -1,5 +1,10 @@
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  
 <h1>id: <%= @task.id %> のタスク編集ページ</h1>
 
 <%= render 'form', task: @task %>
 
 <%= link_to '一覧に戻る', tasks_path %>
+
+<% end %>
