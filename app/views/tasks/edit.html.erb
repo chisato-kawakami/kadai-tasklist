@@ -1,6 +1,7 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
-  
+<% else %>
+
 <h1>id: <%= @task.id %> のタスク編集ページ</h1>
 
 <%= render 'form', task: @task %>
