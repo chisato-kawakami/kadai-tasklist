@@ -1,14 +1,13 @@
 class TasksController < ApplicationController
   #ログイン検証の処理　require
   #ログインした人が、タスクの持ち主なのか コレクトユーザ追加correct_user
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_logged_in, only: [:index, :show, :edit, :new]
+  before_action :require_user_logged_in 
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
     if logged_in?
       @task = current_user.tasks.build
-      @tasks = current_user.tasks.order(id: :desc).page(params[:page])
+      @tasks = current_user.tasks.order(id: :desc)
     end
   end
 
@@ -53,10 +52,6 @@ class TasksController < ApplicationController
   end
 
   private
-  
-  def set_task
-    @task = Task.find(params[:id])
-  end
   
   def task_params
     params.require(:task).permit(:content, :status)
