@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   #ログイン検証の処理　require
   #ログインした人が、タスクの持ち主なのか コレクトユーザ追加correct_user
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_logged_in, only: [:index, :show, :edit]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :new]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
